@@ -86,10 +86,20 @@ html {
   border-bottom: none;
 }
 
+#task-list li.end {
+  color: skyblue;
+}
+
 .material-icons.add {
   font-size: 30px;
   margin-right: 30px;
   color: pink;
+}
+
+.material-icons.add.end {
+  font-size: 30px;
+  margin-right: 30px;
+  color: skyblue;
 }
 
 .material-icons.del {

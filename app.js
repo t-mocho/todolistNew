@@ -33,3 +33,15 @@ document.getElementById('task-list').addEventListener('click', (e) => {
     }
   }
 });
+
+// 完了
+document.getElementById('task-list').addEventListener('click', (e) => {
+  let target = e.target;
+  const endLi = document.getElementsByTagName('li');
+  const endImg = document.getElementsByClassName('material-icons add');
+  for (var i = 0; i < endLi.length; i++) {
+    if (target === endLi[i]) {
+      target.classList.toggle('end');
+    }
+  }
+});
