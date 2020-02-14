@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  background: linear-gradient(-135deg, #abecd6, #fbed96);
+  background-attachment: fixed;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+.header {
+  padding: 30px;
+  border-bottom: 3px dotted #fff;
+  text-align: center;
+  font-size: 2em;
+  color: #fff;
+  width: 80%;
+  margin: auto;
+}
+
+.main {
+  height: 500px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.inText {
+  font-size: 1em;
+}
+
+#inArea {
+  padding: 5px;
+  margin: 10px;
+  width: 200px;
+  height: 25px;
+  border-radius: 20px;
+  border: none;
+}
+
+#inBtn {
+  background: #fff;
+  border: none;
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.task {
+  width: 60%;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.task-title {
+  font-size: 3em;
+  color: #fff;
+  border-bottom: dotted 2px #fff;
+  padding-bottom: 10px;
+}
+
+#task-list {
+  margin: 30px 0;
+  list-style: none;
+  background: #fff;
+  border-radius: 20px;
+}
+
+#task-list li {
+  height: 60px;
+  border-bottom: 1px dotted #ccc;
+  font-size: 1.2em;
+  color: #111;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+#task-list li:last-child {
+  border-bottom: none;
+}
+
+.material-icons.add {
+  font-size: 30px;
+  margin-right: 30px;
+  color: pink;
+}
+
+.material-icons.del {
+  font-size: 20px;
+  color: #ccc;
+  margin-left: auto;
+  cursor: pointer;
+}
