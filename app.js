@@ -24,12 +24,19 @@ addBtn.onclick = function() {
 }
 
 // 削除
-document.getElementById('task-list').addEventListener('click', (e) => {
+const delList = document.getElementById('task-list');
+delList.addEventListener('click', (e) => {
   let target = e.target;
   const delBtn = document.getElementsByClassName('material-icons del');
   for (var i = 0; i < delBtn.length; i++) {
     if (target === delBtn[i]) {
-      target.parentElement.remove();
+      const delList = target.parentNode;
+      delList.style.transform = "translateX(150px)";
+      delList.style.opacity = "0";
+      delList.style.transition = ".9s";
+      setTimeout(function() {
+        delList.style.display = "none";
+      }, 800);
     }
   }
 });
@@ -39,8 +46,8 @@ document.getElementById('task-list').addEventListener('click', (e) => {
   let target = e.target;
   const endLi = document.getElementsByTagName('li');
   const endImg = document.getElementsByClassName('material-icons add');
-  for (var i = 0; i < endLi.length; i++) {
-    if (target === endLi[i]) {
+  for (var i = 0; i < endImg.length; i++) {
+    if (target === endImg[i]) {
       target.classList.toggle('end');
     }
   }
