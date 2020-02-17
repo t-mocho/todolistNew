@@ -10,8 +10,8 @@
 ### 削除  
 ゴミ箱アイコンクリックでイベント発火  
 `event.target` でクリックした箇所の引数とった  
-`element.parentNode` これでliの親要素取って削除
-　・・`classList.add`でクラス与えようとしたら反映されなかったので
+`element.parentNode` これでliの親要素取って削除  
+・・`classList.add`でクラス与えようとしたら反映されなかったので
  `style.css種類` とかを使って後付けした・・ハマッタ・・・
 
 ### 完了 
