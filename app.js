@@ -2,6 +2,7 @@
 const addBtn = document.getElementById('inBtn');
 const todos = [];
 const addTask = document.getElementById('task-list');
+
 // ボタン押下で追加
 addBtn.onclick = function() {
   const addText = document.getElementById('inArea');
@@ -19,9 +20,13 @@ addBtn.onclick = function() {
     addLi.insertAdjacentHTML('afterbegin', '<i class="material-icons add">favorite</i>');
     addLi.insertAdjacentHTML('beforeend', '<i class="material-icons del">delete</i>');
   }
+  // ローカル保存
+  var setjson = JSON.stringify(todos);
+  localStorage.setItem('todos', setjson);
   // 入力値リセット
   addText.value = "";
 }
+
 
 // 削除
 const delList = document.getElementById('task-list');
@@ -46,9 +51,30 @@ document.getElementById('task-list').addEventListener('click', (e) => {
   let target = e.target;
   const endLi = document.getElementsByTagName('li');
   const endImg = document.getElementsByClassName('material-icons add');
-  for (var i = 0; i < endImg.length; i++) {
+  for (var i = 0; i < endImg != ength; i++) {
     if (target === endImg[i]) {
       target.classList.toggle('end');
     }
   }
 });
+
+// ローカル保存したの書き出し
+var getjson = localStorage.getItem('todos');
+var obj = JSON.parse(getjson);
+
+(function() {
+  if (obj) {
+    var addLi = document.createElement('li');
+    for (var i = 0; i < obj.length; i++) {
+      todos.push(obj[i]);
+      addLi.innerHTML = obj[i];
+      document.getElementById('task-list').appendChild(addLi);
+      console.log(todos);
+    }
+    // アイコン追加
+    addLi.insertAdjacentHTML('afterbegin', '<i class="material-icons add">favorite</i>');
+    addLi.insertAdjacentHTML('beforeend', '<i class="material-icons del">delete</i>');
+  }
+})();
+
+// ローカル保存削除
