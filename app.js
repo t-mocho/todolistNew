@@ -20,9 +20,6 @@ addBtn.onclick = function() {
     addLi.insertAdjacentHTML('afterbegin', '<i class="material-icons add">favorite</i>');
     addLi.insertAdjacentHTML('beforeend', '<i class="material-icons del">delete</i>');
   }
-  // ローカル保存
-  var setjson = JSON.stringify(todos);
-  localStorage.setItem('todos', setjson);
   // 入力値リセット
   addText.value = "";
 }
@@ -51,30 +48,9 @@ document.getElementById('task-list').addEventListener('click', (e) => {
   let target = e.target;
   const endLi = document.getElementsByTagName('li');
   const endImg = document.getElementsByClassName('material-icons add');
-  for (var i = 0; i < endImg != ength; i++) {
+  for (var i = 0; i < endImg.length; i++) {
     if (target === endImg[i]) {
       target.classList.toggle('end');
     }
   }
 });
-
-// ローカル保存したの書き出し
-var getjson = localStorage.getItem('todos');
-var obj = JSON.parse(getjson);
-
-(function() {
-  if (obj) {
-    var addLi = document.createElement('li');
-    for (var i = 0; i < obj.length; i++) {
-      todos.push(obj[i]);
-      addLi.innerHTML = obj[i];
-      document.getElementById('task-list').appendChild(addLi);
-      console.log(todos);
-    }
-    // アイコン追加
-    addLi.insertAdjacentHTML('afterbegin', '<i class="material-icons add">favorite</i>');
-    addLi.insertAdjacentHTML('beforeend', '<i class="material-icons del">delete</i>');
-  }
-})();
-
-// ローカル保存削除
