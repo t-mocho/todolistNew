@@ -1,80 +1,74 @@
-// 出力
-const addBtn = document.getElementById('inBtn');
-const todos = [];
-const addTask = document.getElementById('task-list');
+// todolist
+var todos = [{
+  task: addtext,
+  done: false
+}];
+// 0番目削除
+todos.shift();
 
-// ボタン押下で追加
-addBtn.onclick = function() {
-  const addText = document.getElementById('inArea');
-  todos.push(addText.value);
+// id
+const tasklist = document.getElementById('tasklist');
 
-  // 空文字は入力値スルー
-  if (addText.value !== "") {
-    // li作成
-    var addLi = document.createElement('li');
-    for (var i = 0; i < todos.length; i++) {
-      addLi.innerHTML = todos[i];
-      document.getElementById('task-list').appendChild(addLi);
-    }
-    // アイコン追加
-    addLi.insertAdjacentHTML('afterbegin', '<i class="material-icons add">favorite</i>');
-    addLi.insertAdjacentHTML('beforeend', '<i class="material-icons del">delete</i>');
+// 追加
+const addbtn = document.getElementById('addbtn');
+addbtn.onclick = function() {
+  const text = document.getElementById('addtext').value;
+  const todo = {};
+  if (text) {
+    // 値更新
+    todo.task = text;
+    todo.done = false;
+    // 配列追加
+    todos.push(todo);
+    // 書き出し'
+    addtodo(todos);
+    // 入力値リセット
+    let re = document.getElementById('addtext');
+    re.value = "";
   }
-  // ローカル保存
-  var setjson = JSON.stringify(todos);
-  localStorage.setItem('todos', setjson);
-  // 入力値リセット
-  addText.value = "";
-}
+};
 
-
-// 削除
-const delList = document.getElementById('task-list');
-delList.addEventListener('click', (e) => {
-  let target = e.target;
-  const delBtn = document.getElementsByClassName('material-icons del');
-  for (var i = 0; i < delBtn.length; i++) {
-    if (target === delBtn[i]) {
-      const delList = target.parentNode;
-      delList.style.transform = "translateX(150px)";
-      delList.style.opacity = "0";
-      delList.style.transition = ".9s";
-      setTimeout(function() {
-        delList.style.display = "none";
-      }, 800);
-    }
+// 書き出し関数
+function addtodo(todos) {
+  // li作成
+  var newli = document.createElement('li');
+  // todosの配列を1つずつとる
+  for (let i in todos) {
+    var addlist = todos[i].task;
   }
-});
+  // HTMLに書き出し
+  newli.insertAdjacentHTML('afterbegin', '<i class="material-icons add">favorite</i>');
+  newli.appendChild(document.createTextNode(addlist));
+  newli.insertAdjacentHTML('beforeend', '<i class="material-icons del">delete</i>');
+  tasklist.appendChild(newli);
+};
 
 // 完了
-document.getElementById('task-list').addEventListener('click', (e) => {
+tasklist.addEventListener('click', (e) => {
   let target = e.target;
-  const endLi = document.getElementsByTagName('li');
-  const endImg = document.getElementsByClassName('material-icons add');
-  for (var i = 0; i < endImg != ength; i++) {
-    if (target === endImg[i]) {
-      target.classList.toggle('end');
+  // addのみ処理を行う
+  if (target.classList.contains('add')) {
+    for (var i = 0; i < todos.length; i++) {
+      // ハートクリックでtoggle
+      const icon = document.getElementsByClassName('material-icons add');
+      if (target === icon[i]) {
+        target.classList.toggle('end');
+        // done変更
+        todos[i].done = !todos[i].done;
+      }
+    }
+  }
+  console.log(todos);
+});
+
+// 削除
+tasklist.addEventListener('click', (e) => {
+  let target = e.target;
+  // delのみ処理を行う
+  if (target.classList.contains('del')) {
+    target.parentElement.remove();
+    for (var i = 0; i < todos.length; i++) {
+      delete todos[i];
     }
   }
 });
-
-// ローカル保存したの書き出し
-var getjson = localStorage.getItem('todos');
-var obj = JSON.parse(getjson);
-
-(function() {
-  if (obj) {
-    var addLi = document.createElement('li');
-    for (var i = 0; i < obj.length; i++) {
-      todos.push(obj[i]);
-      addLi.innerHTML = obj[i];
-      document.getElementById('task-list').appendChild(addLi);
-      console.log(todos);
-    }
-    // アイコン追加
-    addLi.insertAdjacentHTML('afterbegin', '<i class="material-icons add">favorite</i>');
-    addLi.insertAdjacentHTML('beforeend', '<i class="material-icons del">delete</i>');
-  }
-})();
-
-// ローカル保存削除

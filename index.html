@@ -1,35 +1,27 @@
 <!DOCTYPE html>
-<html lang=ja dir="ltr">
+<html lang="ja" dir="ltr">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=460,initial-scale=1">
-  <title>TODOLIST</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Todolist2保存版</title>
 </head>
 
 <body>
-  <header class="header">
-    <h1>TODOLIST</h1>
+  <header>
+    <h1>todolist</h1>
   </header>
-
-  <main class="main">
-
-    <div class="inText">
-      <input id="inArea" type="text">
-      <button id="inBtn">add</button>
-    </div>
-
-    <div class="task">
-      <h2 class="task-title">My Task</h2>
-      <ul id="task-list">
+  <main>
+    <h2>task</h2>
+    <input type="text" id="addtext">
+    <button id="addbtn">add</button>
+    <hr>
+    <div id="task">
+      <ul id="tasklist">
       </ul>
     </div>
-
   </main>
-
   <script src="app.js"></script>
 </body>
 
