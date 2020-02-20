@@ -20,3 +20,7 @@ body {
 .material-icons.add.end {
   color: skyblue;
 }
+
+.material-icons.del {
+  color: gray;
+}

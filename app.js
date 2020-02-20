@@ -1,5 +1,6 @@
 // todolist
 var todos = [{
+  num: 0,
   task: addtext,
   done: false
 }];
@@ -45,12 +46,13 @@ function addtodo(todos) {
 
 // 完了
 tasklist.addEventListener('click', (e) => {
+  //console.log(todos);
   let target = e.target;
-  // addのみ処理を行う
+  // addclass
+  const icon = document.getElementsByClassName('material-icons add');
   if (target.classList.contains('add')) {
     for (var i = 0; i < todos.length; i++) {
       // ハートクリックでtoggle
-      const icon = document.getElementsByClassName('material-icons add');
       if (target === icon[i]) {
         target.classList.toggle('end');
         // done変更
@@ -58,17 +60,36 @@ tasklist.addEventListener('click', (e) => {
       }
     }
   }
-  console.log(todos);
 });
 
-// 削除
-tasklist.addEventListener('click', (e) => {
-  let target = e.target;
-  // delのみ処理を行う
-  if (target.classList.contains('del')) {
-    target.parentElement.remove();
-    for (var i = 0; i < todos.length; i++) {
-      delete todos[i];
+tasklist.addEventListener('click', (a) => {
+  target = a.target;
+  for (var i = 0; i < todos.length; i++) {
+    const delicon = document.getElementsByClassName('material-icons del');
+    // deliconがクリックされたら処理
+    if (target === delicon[i]) {
+      // 番号取得
+      var id = todos.indexOf(todos[i]);
+      // 配列削除
+      todos.splice(id, 1);
+      // HTML削除
+      target.parentElement.remove();
     }
   }
 });
+
+// ローカルに保存ッ
+const savebtn = document.getElementById('savebtn');
+savebtn.onclick = function() {
+  //JSON.stringifyした上で、localStorageに保存します。
+  var deta = localStorage.setItem('todos', JSON.stringify(todos));
+};
+
+// ローカルから取り出し
+(function() {
+  //localStorageから取り出し
+  var loadtodo = localStorage.getItem('todos');
+  //取り出した後にJSON.parseをかけます。
+  tododeta = JSON.parse(loadtodo);
+  console.log(tododeta);
+})();
