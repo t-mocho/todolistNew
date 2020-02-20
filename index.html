@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html lang="ja" dir="ltr">
+<html lang=ja dir="ltr">
 
 <head>
   <meta charset="utf-8">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=460,initial-scale=1">
+  <title>TODOLIST</title>
   <link rel="stylesheet" href="style.css">
-  <title>Todolist2保存版</title>
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <h1>todolist</h1>
+  <header class="header">
+    <h1>TODOLIST</h1>
   </header>
-  <main>
-    <h2>task</h2>
-    <input type="text" id="addtext">
-    <button id="addbtn">add</button>
-    <hr>
-    <div id="task">
-      <ul id="tasklist">
+
+  <main class="main">
+
+    <div class="inText">
+      <input id="inArea" type="text">
+      <button id="inBtn">add</button>
+    </div>
+
+    <div class="task">
+      <h2 class="task-title">My Task</h2>
+      <ul id="task-list">
+        <li><i class="material-icons add">favorite</i>おにぎりつくる<i class="material-icons del">delete</i></li>
+        <li><i class="material-icons add end">favorite</i>パピコわける<i class="material-icons del">delete</i></li>
+        <li><i class="material-icons add end">favorite</i>筋トレ<i class="material-icons del">delete</i></li>
       </ul>
     </div>
-    <button id="savebtn">save</button>
-    <button id="clearbtn">save</button>
+
   </main>
+
   <script src="app.js"></script>
 </body>
 
